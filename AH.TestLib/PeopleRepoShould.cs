@@ -1,18 +1,36 @@
 using AH.Lib;
 using FluentAssertions;
+using Serilog;
+using Xunit.Abstractions;
 
 namespace AH.TestLib
 {
+    [Collection(nameof(DatabaseCollection))]
     public class PeopleRepoShould
     {
-        private const string ConnectionString = "Host=localhost;Port=5432;Database=AHTestContainers;Username=postgres;Include Error Detail=true";
+        private readonly DatabaseFixture _dbFixture;
+        private readonly ILogger _testLogger;
+
+        public PeopleRepoShould(
+            DatabaseFixture dbFixture, ITestOutputHelper output)
+        {
+            _dbFixture = dbFixture;
+
+            var loggerConfig = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .MinimumLevel.Verbose()
+                .WriteTo.TestOutput(output);
+            _testLogger = loggerConfig.CreateLogger();
+        }
 
         [Fact]
         public async Task GetAllPeople()
         {
             // Arrange
-            await using var context = new ContextFactory(ConnectionString).CreateContext();
-            using var cut = new PeopleRepo(context);
+            await using var context = new ContextFactory(
+                    _testLogger, _dbFixture.PgConnectionString)
+                .CreateContext();
+            using var cut = new PeopleRepo(_testLogger, context);
 
             // Act
             var people = (await cut.GetPeopleAsync()).ToList();
