@@ -32,6 +32,8 @@ public class AhDbContext : DbContext
             locale: "en-u-ks-level2",
             deterministic: false);
 
+        modelBuilder.Entity<Person>().ToTable("people");
+
         modelBuilder.Entity<Person>().HasData(
             new Person { Id = 1, FirstName = "John", LastName = "Doe" },
             new Person { Id = 2, FirstName = "Jane", LastName = "Doe" }
