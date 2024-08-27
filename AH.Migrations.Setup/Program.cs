@@ -17,7 +17,8 @@ builder.ConfigureServices((context, services) =>
             {
                 npgOptions.MigrationsAssembly(typeof(AH.Migrations.Postgres.Marker).Assembly.GetName().Name);
                 npgOptions.CommandTimeout(300);
-            });
+            })
+            .UseLowerCaseNamingConvention();
     });
 });
 builder.Build();
