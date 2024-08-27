@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AH.Migrations.Setup", "AH.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AH.Migrations.Postgres", "AH.Migrations.Postgres\AH.Migrations.Postgres.csproj", "{004F61B0-FA8C-456D-A2B9-0E6BB483A346}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AH.Lib", "AH.Lib\AH.Lib.csproj", "{B6C113DE-4EC2-4E14-BD8A-1BF654C28B6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{004F61B0-FA8C-456D-A2B9-0E6BB483A346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{004F61B0-FA8C-456D-A2B9-0E6BB483A346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{004F61B0-FA8C-456D-A2B9-0E6BB483A346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C113DE-4EC2-4E14-BD8A-1BF654C28B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C113DE-4EC2-4E14-BD8A-1BF654C28B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C113DE-4EC2-4E14-BD8A-1BF654C28B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C113DE-4EC2-4E14-BD8A-1BF654C28B6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
