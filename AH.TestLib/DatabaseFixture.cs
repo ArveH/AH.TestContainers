@@ -17,6 +17,7 @@ public class DatabaseFixture : IAsyncLifetime
             .WithImage("postgres:latest")
             .Build();
         await _pgContainer.StartAsync();
+        await _pgContainer.WaitForPort();
         _connectionString = _pgContainer.GetConnectionString();
     }
 
