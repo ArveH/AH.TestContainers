@@ -6,8 +6,7 @@ public class DatabaseFixture : IAsyncLifetime
 {
     private PostgreSqlContainer? _pgContainer;
 
-    private string _connectionString =
-        "Host=localhost;Port=5432;Database=TestU4Ids;Username=postgres;Include Error Detail=true";
+    private string _connectionString = string.Empty;
 
     public string PgConnectionString => _connectionString
         ?? throw new ArgumentNullException(nameof(PgConnectionString));
