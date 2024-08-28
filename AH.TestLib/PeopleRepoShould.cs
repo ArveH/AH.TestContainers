@@ -1,5 +1,6 @@
 using AH.Lib;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Xunit.Abstractions;
 
@@ -38,6 +39,21 @@ namespace AH.TestLib
             // Assert
             people.Should().NotBeEmpty();
             people.Select(p => p.FirstName).Should().Contain("John");
+        }
+
+        [Fact]
+        public async Task GetAnError()
+        {
+            // Arrange
+            await using var context = new ContextFactory(
+                    _testLogger, _dbFixture.PgConnectionString)
+                .CreateContext();
+
+            // Act
+            var rows = await context.Database.ExecuteSqlAsync($"delete from does_not_exist");
+
+            // Assert
+            rows.Should().Be(0);
         }
     }
 }
