@@ -22,3 +22,4 @@ steps:
   inputs:
     command: 'test'
     projects: '**/AH.Test*.csproj'
+    arguments: --verbosity normal
